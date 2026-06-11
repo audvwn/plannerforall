@@ -1,0 +1,90 @@
+/* ── layout & base ── */
+.addon-header-tools{display:flex;align-items:center;gap:5px}
+.addon-user-pill{max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.64rem;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:4px 8px}
+.addon-panel{position:fixed;inset:0;z-index:900;background:rgba(70,45,60,.22);display:none;align-items:center;justify-content:center;padding:20px}
+.addon-panel.open{display:flex}
+.addon-dialog{width:min(420px,100%);background:var(--surface);border:1.5px solid var(--pink-mid);border-radius:18px;padding:20px;box-shadow:0 18px 60px rgba(100,50,80,.2)}
+.addon-dialog h2{font-family:'Cormorant Garamond',serif;color:var(--pink-text);font-size:1.45rem;margin-bottom:12px}
+.addon-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.addon-field{width:100%;border:1.5px solid var(--pink-mid);border-radius:10px;padding:8px 11px;background:var(--surface);color:var(--text);font:inherit;outline:none;box-sizing:border-box}
+.addon-field:focus{border-color:var(--pink-dark)}
+.addon-actions{display:flex;gap:7px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}
+.addon-divider{text-align:center;color:var(--text-muted);font-size:.7rem;margin:10px 0}
+.addon-card{margin-top:.75rem}
+.addon-note{font-size:.68rem;color:var(--text-muted);line-height:1.45;margin-top:8px}
+.addon-empty{font-size:.75rem;color:var(--text-muted);text-align:center;padding:10px}
+.addon-reward{position:fixed;z-index:950;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--surface);border:1.5px solid var(--yellow-mid);border-radius:18px;padding:8px 15px;color:var(--yellow-text);font-size:.78rem;box-shadow:var(--shadow);transition:.25s}
+.addon-reward.show{opacity:1;transform:translate(-50%,0)}
+.recurrence-select{max-width:110px;border:1.5px solid var(--pink-mid);border-radius:20px;padding:6px 9px;background:var(--surface);color:var(--text);font:inherit;font-size:.72rem}
+
+/* ── tracker layout ── */
+.tracker-section{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tracker-pane{min-width:0}
+.tracker-pane+.tracker-pane{border-left:1px solid var(--border);padding-left:16px}
+
+/* ── tracker header titles & stats ── */
+.addon-card-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;flex-wrap:wrap;gap:6px}
+.addon-card-title>span:first-child{color:var(--mint-dark);font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;letter-spacing:.02em}
+.addon-card-title>span:last-child{font-size:.72rem;font-weight:700;color:var(--pink-text);background:var(--pink);border-radius:20px;padding:2px 10px;white-space:nowrap;font-family:'Nunito',sans-serif}
+
+/* ── study form ── */
+.addon-form{display:grid;grid-template-columns:1fr 1fr;gap:7px;align-items:start}
+.addon-form .wide{grid-column:1/-1}
+.addon-form button{grid-column:1/-1;justify-self:end}
+.addon-form input[type="date"]{color-scheme:light;font-family:'Nunito',sans-serif;font-size:.82rem;color:var(--pink-text);}
+.addon-form input[type="date"]::-webkit-calendar-picker-indicator{opacity:.5;cursor:pointer;filter:invert(40%) sepia(60%) saturate(400%) hue-rotate(300deg);}
+
+/* ── habit add form ── */
+#habitForm{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:4px}
+#habitForm input{flex:1;min-width:120px;border:1.5px solid var(--mint-mid);border-radius:10px;padding:7px 11px;background:var(--surface);color:var(--text);font:inherit;font-size:.82rem;outline:none}
+#habitForm input:focus{border-color:var(--mint-dark)}
+#habitForm input::placeholder{color:var(--mint-text);opacity:.6}
+
+/* ── list rows ── */
+.addon-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.addon-row{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:11px;background:rgba(255,255,255,.62);font-size:.8rem;flex-wrap:wrap}
+.addon-row-main{flex:1;min-width:120px}
+.addon-row-main strong{color:var(--pink-text);font-size:.84rem}
+.addon-row-sub{font-size:.68rem;color:var(--text-muted);margin-top:2px}
+
+/* ── habit week grid ── */
+.habit-week{display:flex;gap:3px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.habit-day{width:28px;height:28px;border:1.5px solid var(--mint-mid);border-radius:7px;background:var(--surface);color:var(--mint-text);cursor:pointer;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;flex-shrink:0;padding:0}
+.habit-day.done{background:var(--mint-mid);color:#fff;border-color:var(--mint-dark)}
+.habit-day:hover:not(.done){background:var(--mint);border-color:var(--mint-dark)}
+
+/* ── dark mode ── */
+html.dark-mode .addon-row{background:rgba(255,255,255,.04)}
+html.dark-mode .addon-field,html.dark-mode #habitForm input{background:#252128!important;color:var(--text)!important;border-color:#625264}
+html.dark-mode .addon-card-title>span:first-child{color:var(--mint-text)}
+html.dark-mode .addon-card-title>span:last-child{color:var(--pink-text);background:var(--pink)}
+html.dark-mode .addon-row-main strong{color:var(--pink-text)}
+html.dark-mode .recurrence-select{background:#252128;color:var(--text);border-color:var(--pink-mid)}
+
+/* ── responsive: tablet (≤760px) ── */
+@media(max-width:760px){
+  .tracker-section{grid-template-columns:1fr}
+  .tracker-pane+.tracker-pane{border-left:0;border-top:1px solid var(--border);padding-left:0;padding-top:14px}
+  .addon-form{grid-template-columns:1fr 1fr}
+  .addon-form .wide{grid-column:1/-1}
+  .addon-form button{grid-column:1/-1;justify-self:stretch}
+  .addon-grid{grid-template-columns:1fr}
+  .addon-user-pill{display:none}
+  .habit-week{gap:4px}
+  .habit-day{width:30px;height:30px}
+}
+
+/* ── responsive: phone (≤480px) ── */
+@media(max-width:480px){
+  .addon-form{grid-template-columns:1fr}
+  .addon-form .wide{grid-column:1}
+  .addon-form button{grid-column:1;justify-self:stretch}
+  .addon-card-title{flex-direction:column;align-items:flex-start;gap:4px}
+  .habit-week{gap:3px}
+  .habit-day{width:32px;height:32px;font-size:.7rem}
+  .recurrence-select{max-width:100%;width:100%}
+  #habitForm{flex-direction:column;align-items:stretch}
+  #habitForm input{min-width:0;width:100%}
+}
+
+@media print{.book-tabs,.book-header,.book-footer,.cover-screen,.notif-banner,.addon-header-tools{display:none!important}}
